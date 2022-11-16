@@ -19,8 +19,8 @@ local OCIFunction for Index,Function in pairs(getgc()) do
     end
 end if not OCIFunction then return end
 
-local Window = Parvus.Utilities.UI:Window({
-    Name = "Wtf — "..Parvus.Game,
+local Window = rerzx.Utilities.UI:Window({
+    Name = "Wtf — "..rerzx.Game,
     Position = UDim2.new(0.05,0,0.5,-248)
     }) do Window:Watermark({Enabled = true})
 
@@ -180,11 +180,11 @@ local Window = Parvus.Utilities.UI:Window({
         end
         SettingsTab:AddConfigSection("Left")
         SettingsTab:Button({Name = "Rejoin",Side = "Left",
-        Callback = Parvus.Utilities.Misc.ReJoin})
+        Callback = rerzx.Utilities.Misc.ReJoin})
         SettingsTab:Button({Name = "Server Hop",Side = "Left",
-        Callback = Parvus.Utilities.Misc.ServerHop})
+        Callback = rerzx.Utilities.Misc.ServerHop})
         SettingsTab:Button({Name = "Join Discord Server",Side = "Left",
-        Callback = Parvus.Utilities.Misc.JoinDiscord})
+        Callback = rerzx.Utilities.Misc.JoinDiscord})
         :ToolTip("Join for support, updates and more!")
         local BackgroundSection = SettingsTab:Section({Name = "Background",Side = "Right"}) do
             BackgroundSection:Dropdown({Name = "Image",Flag = "Background/Image",List = {
@@ -251,12 +251,12 @@ Window:LoadDefaultConfig()
 Window:SetValue("Background/Offset",296)
 Window:SetValue("UI/Toggle",Window.Flags["UI/OOL"])
 
-Parvus.Utilities.Misc:SetupWatermark(Window)
-Parvus.Utilities.Drawing:SetupCursor(Window.Flags)
+rerzx.Utilities.Misc:SetupWatermark(Window)
+rerzx.Utilities.Drawing:SetupCursor(Window.Flags)
 
-Parvus.Utilities.Drawing:FOVCircle("Aimbot",Window.Flags)
-Parvus.Utilities.Drawing:FOVCircle("Trigger",Window.Flags)
-Parvus.Utilities.Drawing:FOVCircle("SilentAim",Window.Flags)
+rerzx.Utilities.Drawing:FOVCircle("Aimbot",Window.Flags)
+rerzx.Utilities.Drawing:FOVCircle("Trigger",Window.Flags)
+rerzx.Utilities.Drawing:FOVCircle("SilentAim",Window.Flags)
 
 local RaycastParams = RaycastParams.new()
 RaycastParams.FilterType = Enum.RaycastFilterType.Blacklist
@@ -391,7 +391,7 @@ RunService.Heartbeat:Connect(function()
         }),{Sensitivity = Window.Flags["Aimbot/Smoothness"] / 100})
     end
 end)
-Parvus.Utilities.Misc:NewThreadLoop(0,function()
+rerzx.Utilities.Misc:NewThreadLoop(0,function()
     if not Trigger then return end
     local TriggerHitbox = GetHitbox({
         Enabled = Window.Flags["Trigger/Enabled"],
@@ -422,11 +422,11 @@ Parvus.Utilities.Misc:NewThreadLoop(0,function()
 end)
 
 for Index,NPC in pairs(NPCFolder:GetChildren()) do
-    Parvus.Utilities.Drawing:AddESP(NPC,"NPC","ESP/NPC",Window.Flags)
+    rerzx.Utilities.Drawing:AddESP(NPC,"NPC","ESP/NPC",Window.Flags)
 end
 NPCFolder.ChildAdded:Connect(function(NPC)
-    Parvus.Utilities.Drawing:AddESP(NPC,"NPC","ESP/NPC",Window.Flags)
+    rerzx.Utilities.Drawing:AddESP(NPC,"NPC","ESP/NPC",Window.Flags)
 end)
 NPCFolder.ChildRemoved:Connect(function(NPC)
-    Parvus.Utilities.Drawing:RemoveESP(NPC)
+    rerzx.Utilities.Drawing:RemoveESP(NPC)
 end)
