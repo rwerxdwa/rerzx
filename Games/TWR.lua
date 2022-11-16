@@ -1,4 +1,4 @@
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
+﻿local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local PlayerService = game:GetService("Players")
@@ -20,13 +20,14 @@ local OCIFunction for Index,Function in pairs(getgc()) do
 end if not OCIFunction then return end
 
 local Window = Parvus.Utilities.UI:Window({
-    Name = "🎃 Parvus Hub — "..Parvus.Game,
+    Name = "Wtf — "..Parvus.Game,
     Position = UDim2.new(0.05,0,0.5,-248)
     }) do Window:Watermark({Enabled = true})
 
     local AimAssistTab = Window:Tab({Name = "Combat"}) do
         local MiscSection = AimAssistTab:Section({Name = "Misc",Side = "Left"}) do
             MiscSection:Toggle({Name = "Unlimited Ammo",Flag = "TWR/InfAmmo",Value = false})
+            :Keybind({Value = "RightShift",Flag = "UI/Keybind",DoNotClear = true})
             MiscSection:Toggle({Name = "Wallbang",Flag = "TWR/Wallbang",Value = false}):ToolTip("Silent Aim Required")
             MiscSection:Toggle({Name = "Instant Hit",Flag = "TWR/NoBulletDrop",Value = false}):ToolTip("Silent Aim Required\nAlso Enables Wallbang")
         end
